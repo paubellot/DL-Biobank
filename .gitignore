@@ -2,3 +2,5 @@
 *.xml
 
 \.idea/DL-Biobank\.iml
+
+neural-network-genetic-algorithm/\.~lock\.biobank_res\.csv#
