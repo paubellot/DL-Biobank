@@ -1,15 +1,25 @@
 #!/bin/bash
+source ~/Projects/biobank/biobank/bin/activate
 
-## linear model nloci=1000
-./sim1.sh
-## model with epistasia nloci=1000
-./sim2.sh
-## linear model nloci=5000
-./sim2.sh
-## new gamma
-./sim4.sh
+# linear model
+qaction=linear # additive genetic model
+nloci=100 # num qtls in model (nloci=100, 1000, 10000)
+k=1000    # num snps in model (k=10000, 20000, 50000 were evaluated)
+for i in $(seq 1 10); do
+    python simulation.py  --id $i$model$nloci --genmodel $qaction --loci $nloci --k $k --method lasso --recreation True
+    python simulation.py  --id $i$model$nloci --genmodel $qaction --loci $nloci --k $k --method ridge 
+    python simulation.py  --id $i$model$nloci --genmodel $qaction --loci $nloci --k $k --method mlp1 
+    python simulation.py  --id $i$model$nloci --genmodel $qaction --loci $nloci --k $k --method mlp2 
+done
 
-## Plot in R
-grep Names nohup.lin.*|grep -v nan| awk '{print $5,$4,$6,$12}'|sed s/=/' '/g| sed s/,//g| sed s/\'/' '/g | awk '{print $2,$4,$6,$7}' > lin.out
-grep Names nohup.epi.*|grep -v nan|awk '{print $5,$4,$6,$12}'|sed s/=/' '/g| sed s/,//g| sed s/\'/' '/g | awk '{print $2,$4,$6,$7}' > epi.out
-Rscript a.R
+# epistatic action
+qaction=epistasia 
+nloci=100 # num qtls in model (nloci=100, 10000)
+k=1000    # num snps in model (k=10000, 20000, 50000 were evaluated)
+for i in $(seq 1 10); do
+    python simulation.py  --id $i$model$nloci --genmodel $qaction --loci $nloci --k $k --method lasso --recreation True
+    python simulation.py  --id $i$model$nloci --genmodel $qaction --loci $nloci --k $k --method ridge 
+    python simulation.py  --id $i$model$nloci --genmodel $qaction --loci $nloci --k $k --method mlp1 
+    python simulation.py  --id $i$model$nloci --genmodel $qaction --loci $nloci --k $k --method mlp2 
+done
+
