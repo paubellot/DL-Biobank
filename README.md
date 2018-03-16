@@ -19,5 +19,8 @@ This repo contains the code to reproduce the experiments of the paper [ Can deep
 #### Deep learning hyperparamer tuning 
 - see neural-network-genetic-algorithm directory
 
+#### Figure 1 generation
+- see Figure 1 notebook
+
 ## License
 MIT
