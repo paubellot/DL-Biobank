@@ -1,5 +1,5 @@
-# Can deep learning improve genomic prediction of complex traits in humans?
-This repo contains the code to reproduce the experiments of the paper [ Can deep learning improve genomic prediction of complex traits in humans?](https://arxiv.org/...).
+# Can deep learning improve genomic prediction of complex human traits?
+This repo contains the code to reproduce the experiments of the paper [Can deep learning improve genomic prediction of complex human traits?](https://arxiv.org/...).
 
 
 ## Before you start
