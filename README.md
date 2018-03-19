@@ -1,10 +1,10 @@
 # Can deep learning improve genomic prediction of complex human traits?
-This repo contains the code to reproduce the experiments of the paper [Can deep learning improve genomic prediction of complex human traits?](https://arxiv.org/...).
+This repo contains the code to reproduce the experiments of the paper[Can deep learning improve genomic prediction of complex human traits?](https://arxiv.org/...).
 
 
 ## Before you start
 
-- Download and install Tensorflow and Keras.
+- Download and install [Tensorflow](https://www.tensorflow.org/install/) and [Keras](https://keras.io/#keras-the-python-deep-learning-library).
 - Download the biobank dataset and traits.
 - Run a GWAS for all traits
 
