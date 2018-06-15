@@ -16,18 +16,15 @@ from keras.regularizers import l2
 from keras.callbacks import EarlyStopping, Callback
 from keras import backend as K
 import numpy as np
-import pandas as pd
 from scipy.stats import pearsonr
 import logging
-from utils.bb_data import DataDefinition
+from utils.utils import retrieve_data
 from sklearn.model_selection import train_test_split
 
 # Helper: Early stopping.
 early_stopper = EarlyStopping(monitor='val_loss', min_delta=0.1, patience=2, verbose=0, mode='auto')
 
 
-# In case that your training loss is not dropping - which means you are learning nothing after each epoch.
-# It look like there's nothing to learn in this model, aside from some trivial linear-like fit or cutoff value.
 
 def compile_model_cnn(geneparam, input_shape):
     """Compile a sequential model.
@@ -123,27 +120,6 @@ class LossHistory(Callback):
         self.losses.append(logs.get('loss'))
 
 
-def get_data(dataset):
-    markers = data[dataset.trait][str(dataset.k)].markers_cnn_tr()
-    pheno = data[dataset.trait][str(dataset.k)].pheno_tr()
-    has_trait_data = pd.DataFrame(pheno).notnull().values.ravel()
-    markers, pheno = markers[has_trait_data, :], pheno[has_trait_data]
-    x_train, x_test, y_train, y_test = train_test_split(markers, pheno, test_size=0.33, random_state=42)
-    return (markers.shape[1], x_train, x_test, y_train, y_test)
-
-
-def retrieve_data(dataset):
-    Ds = DataDefinition(dataset.trait,dataset.k)
-    xtr = Ds.markers_cnn_tr()
-    ytr = Ds.pheno_tr()
-    has_trait_data = pd.DataFrame(ytr).notnull().values.ravel()
-    xtr, ytr = xtr[has_trait_data, :], ytr[has_trait_data]
-    xtst = Ds.markers_cnn_tst()
-    ytst = Ds.pheno_tst()
-    has_trait_data = pd.DataFrame(ytst).notnull().values.ravel()
-    xtst, ytst = xtst[has_trait_data, :], ytst[has_trait_data]
-    return (xtr, xtst, ytr, ytst)
-
 
 def train_and_score(geneparam, dataset):
     """Train the model, return test loss.
@@ -154,7 +130,9 @@ def train_and_score(geneparam, dataset):
 
     """
     logging.info("Getting datasets")
-    input_shape, x_train, x_test, y_train, y_test = get_data(dataset)
+    x_train, x_test, y_train, y_test = retrieve_data(dataset.trait, dataset.k, unif=dataset.unif)
+
+    input_shape = x_train.shape[1]
     train_data = np.expand_dims(x_train, axis=2)
     test_data = np.expand_dims(x_test, axis=2)
     input_shape = (input_shape, 1)
