@@ -11,11 +11,11 @@ from keras import backend as K
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.regularizers import l1, l2
-sys.path.insert(0, os.path.join(os.path.expanduser("~"), 'Code/genomic_cnn/'))
-from utils.utils import retrieve_data
-from evolve_cnn.train import compile_model_cnn
-from evolve.train import compile_model_mlp
-from utils.utils import convert_to_individual_alleles
+
+from GA.utils.utils import retrieve_data
+from GA.evolve_cnn.train import compile_model_cnn
+from GA.evolve.train import compile_model_mlp
+from GA.utils.utils import convert_to_individual_alleles
 
 early_stopper = EarlyStopping(monitor='val_loss', min_delta=0.1, patience=2, verbose=0, mode='auto')
 
