@@ -13,9 +13,6 @@ This repo contains the code to reproduce the experiments of the paper [Can deep 
 #### Train linar and MLPs models for all traits
 ```python main.py```
 
-#### Simulation
-- see simulation directory
-
 #### Deep learning hyperparamer tuning 
 - see neural-network-genetic-algorithm directory
 
