@@ -17,7 +17,7 @@ https://medium.com/@harvitronix/lets-evolve-a-neural-network-with-a-genetic-algo
 
 ## Credits
 
-The genetic algorithm code is based on the code from this excellent blog post: https://lethain.com/genetic-algorithms-cool-name-damn-simple/
+The genetic algorithm code is based on the code from this excellent blog post: https://lethain.com/genetic-algorithms-cool-name-damn-simple/ and this excelent repository: https://github.com/rileymcdowell/genomic-neuralnet
 
 It's a fork of [Jan Liphardt's implementation, DeepEvolve](https://github.com/jliphard/DeepEvolve) 
 ## Contributing
