@@ -8,10 +8,10 @@ https://medium.com/@harvitronix/lets-evolve-a-neural-network-with-a-genetic-algo
 
 ## To run
 
-#### Optimize MLPs arquitecture for Height with 10k Best SNPS 
+#### Optimize MLPs architecture for Height with 10k Best SNPS 
 ```python main.py --mlp```
 
-#### Optimize CNNs arquitecture for BHMD with 10k Best SNPS 
+#### Optimize CNNs architecture for BHMD with 10k Best SNPS 
 ```python main.py --cnn --trait BHMD```
 
 
