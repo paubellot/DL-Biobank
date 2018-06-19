@@ -5,8 +5,12 @@ This repo contains the code to reproduce the experiments of the paper [Can deep 
 ## Before you start
 
 - Download and install [Tensorflow](https://www.tensorflow.org/install/) and [Keras](https://keras.io/#keras-the-python-deep-learning-library).
+  - The file ```requirements.txt``` contains a simple list of all the packages in the current environment, and their respective versions.
 - Download the biobank dataset and traits.
-- Run a GWAS for all traits and save the results in a file
+  - Save genotypes
+  - Save phenotypes in a csv, each trait should be in a column
+- Run a GWAS for all traits and save the results in a csv file
+  - This csv should have the p-values of each SNP for each trait (in columns)
 
 ## To run
 
@@ -22,8 +26,8 @@ This repo contains the code to reproduce the experiments of the paper [Can deep 
 #### Deep learning hyperparamer tuning 
 - see GA directory
 
-#### Figure 1 generation
-- see Figure 1 notebook
+#### To generate the figures eneration
+- see notebook and R code
 
 ## License
 MIT
