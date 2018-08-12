@@ -1,4 +1,4 @@
-# Can deep learning improve genomic prediction of complex human traits?
+# Can deep learning improve genomic prediction of complex human traits? by Pau Bellot, Gustavo de los Campos, Miguel Pérez-Enciso, Genetics, in press.
 This repo contains the code to reproduce the experiments of the paper [Can deep learning improve genomic prediction of complex human traits?](https://arxiv.org/...).
 
 
