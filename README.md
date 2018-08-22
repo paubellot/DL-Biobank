@@ -12,7 +12,7 @@ This repo contains the code to reproduce the experiments of the paper [Can deep 
 - Run a GWAS for all traits and save the results in a csv file
   - This csv should have the p-values of each SNP for each trait (in columns)
 #### data
-- data/ folder contains the GWAS for all the traits used in the paper and the Train and Test ids
+- data/ folder contains the GWAS for all the traits used in the paper
 ## To run
 
 #### Train MLPs models for height with 10k Best SNPS 
