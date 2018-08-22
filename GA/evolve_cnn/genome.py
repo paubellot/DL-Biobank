@@ -67,7 +67,7 @@ class Genome():
                + str(self.geneparam['nb_cnn_layers']) + str(self.geneparam['batch_norm']) \
                + str(self.geneparam['filters']) + str(self.geneparam['size_window']) + self.geneparam['stride']
 
-        self.hash = hashlib.md5(genh.encode("UTF-8")).hexdigest()
+        self.hash = hashlib.sha256(genh.encode("UTF-8")).hexdigest()
 
         self.r = -1.0
 

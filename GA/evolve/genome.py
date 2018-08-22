@@ -46,7 +46,7 @@ class Genome():
                + str(self.geneparam['nb_layers']) + self.geneparam['optimizer'] \
                + str(self.geneparam['dropout']) + str(self.geneparam['weight_decay'])
 
-        self.hash = hashlib.md5(genh.encode("UTF-8")).hexdigest()
+        self.hash = hashlib.sha256(genh.encode("UTF-8")).hexdigest()
 
         self.r = -1.0
 
