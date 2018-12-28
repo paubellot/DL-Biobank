@@ -8,17 +8,17 @@ Inspiration:
 from __future__ import print_function
 
 import random
-import logging
+
 import copy
 
 from functools import reduce
 from operator import add
-from evolve_cnn.genome import Genome
-from evolve_cnn.idgen import IDgen
-from evolve_cnn.allgenomes import AllGenomes
+from GA.evolve_cnn.genome import Genome
+from GA.evolve_cnn.idgen import IDgen
+from GA.evolve_cnn.allgenomes import AllGenomes
 
 
-class Evolver():
+class Evolver:
     """Class that implements genetic algorithm."""
 
     def __init__(self, all_possible_genes, retain=0.15, random_select=0.1, mutate_chance=0.3):
@@ -42,6 +42,7 @@ class Evolver():
 
         # set the ID gen
         self.ids = IDgen()
+        self.master = None
 
     def create_population(self, count):
         """Create a population of random networks.
@@ -82,10 +83,6 @@ class Evolver():
                 self.master.add_genome(genome)
 
             i += 1
-
-        # self.master.print_all_genomes()
-
-        # exit()
 
         return pop
 

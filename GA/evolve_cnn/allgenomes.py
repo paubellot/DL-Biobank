@@ -1,7 +1,4 @@
-import random
 import logging
-
-from evolve_cnn.genome import Genome
 
 
 class AllGenomes():
