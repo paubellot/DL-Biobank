@@ -5,7 +5,7 @@ import logging
 import hashlib
 import copy
 
-from evolve_cnn.train import train_and_score
+from GA.evolve_cnn.train import train_and_score
 
 
 class Genome():
@@ -149,5 +149,5 @@ class Genome():
         """Print out a genome."""
         logging.info(self.geneparam)
         logging.info("R: %.2f%% UniID: %d Mom and Dad: %d %d Gen: %d" % (
-            self.r , self.u_ID, self.parents[0], self.parents[1], self.generation))
+            self.r, self.u_ID, self.parents[0], self.parents[1], self.generation))
         logging.info("Hash: %s" % self.hash)

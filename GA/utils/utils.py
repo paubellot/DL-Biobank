@@ -1,8 +1,12 @@
-from .hck_data import DataDefinition
-import pandas as pd
-import numpy as np
 import os
 import hickle as hkl
+
+# numpy
+import numpy as np
+# Pandas
+import pandas as pd
+
+from .hck_data import DataDefinition
 
 
 def clean_data(trait, k, tr =True):
@@ -36,7 +40,8 @@ def retrieve_data(trait, k, unif=False):
     ytst = Ds._pheno_tst
     has_trait_data = pd.DataFrame(ytst).notnull().values.ravel()
     xtst, ytst = xtst[has_trait_data, :], ytst[has_trait_data]
-    return (xtr, xtst, ytr, ytst)
+
+    return xtr, xtst, ytr, ytst
 
 
 def convert_to_individual_alleles(array):

@@ -1,7 +1,4 @@
-import random
 import logging
-
-from .genome import Genome
 
 
 class AllGenomes():
@@ -20,7 +17,7 @@ class AllGenomes():
         """
 
         for i in range(0, len(self.population)):
-            if (genome.hash == self.population[i].hash):
+            if genome.hash == self.population[i].hash:
                 logging.info("add_genome() ERROR: hash clash - duplicate genome")
                 return False
 
@@ -44,7 +41,7 @@ class AllGenomes():
         """
 
         for i in range(0, len(self.population)):
-            if (genome.hash == self.population[i].hash):
+            if genome.hash == self.population[i].hash:
                 return True
 
         return False

@@ -5,7 +5,7 @@ import logging
 import hashlib
 import copy
 
-from train import train_and_score
+from GA.evolve.train import train_and_score
 
 
 class Genome():

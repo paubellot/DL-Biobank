@@ -7,16 +7,23 @@ and also on
     https://github.com/fchollet/keras/blob/master/examples/mnist_cnn.py
 
 """
+import logging
 
-# import keras
+# Keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
 from keras.regularizers import l2
 from keras.callbacks import EarlyStopping, Callback
 from keras.layers import Conv2D, MaxPooling2D
 from keras import backend as K
+
+# Scipy
 from scipy.stats import pearsonr
-import logging
+# Sklearn
+from sklearn.model_selection import train_test_split
+
+from GA.utils.utils import clean_data
+
 
 # Helper: Early stopping.
 early_stopper = EarlyStopping(monitor='val_loss', min_delta=0.1, patience=2, verbose=0, mode='auto')
@@ -24,10 +31,8 @@ early_stopper = EarlyStopping(monitor='val_loss', min_delta=0.1, patience=2, ver
 # It look like there's nothing to learn in this model, aside from some trivial linear-like fit or cutoff value.
 
 
-
 def compile_model_mlp(geneparam, input_shape):
     """Compile a sequential model.
-
     Args:
         geneparam (dict): the parameters of the network
 
@@ -94,9 +99,7 @@ def compile_model_cnn(geneparam, nb_classes, input_shape):
     nb_neurons = geneparam['nb_neurons']
     activation = geneparam['activation']
     optimizer = geneparam['optimizer']
-
     logging.info("Architecture:%d,%s,%s,%d" % (nb_neurons, activation, optimizer, nb_layers))
-
     model = Sequential()
 
     # Add each layer.
@@ -137,12 +140,9 @@ class LossHistory(Callback):
 
 
 def get_data(dataset):
-    from utils.utils import clean_data
-    from sklearn.model_selection import train_test_split
-
     markers, pheno = clean_data(dataset.trait, dataset.k)
     x_train, x_test, y_train, y_test = train_test_split(markers, pheno, test_size=0.33, random_state=42)
-    return (markers.shape[1], x_train, x_test, y_train, y_test)
+    return markers.shape[1], x_train, x_test, y_train, y_test
 
 
 def train_and_score(geneparam, dataset):
@@ -178,7 +178,7 @@ def train_and_score(geneparam, dataset):
     K.clear_session()
     # we do not care about keeping any of this in memory -
     # we just need to know the final scores and the architecture
-
     if r != r:
         r = -1.0
+
     return r

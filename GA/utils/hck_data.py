@@ -1,21 +1,27 @@
 import os
-import numpy as np
-import pandas as pd
-from scipy import stats
 import hickle as hkl
+import struct
+
+# numpy
+import numpy as np
+# Pandas
+import pandas as pd
+# scipy
+from scipy import stats
+# sklearn
+from sklearn import preprocessing
+
 
 _data_dir = '/home/data/biobank/'
 _mydata_dir = os.path.join(os.path.expanduser("~"), "Data/bbUK/")
 
+
 def readgbinfile(binfile, snp_list=None, ind_list=None, std=True, maxval=None):
-#------------------------------------------------------------------------------
     """ reads genotype bin file into np array
         Optionally, reads only snps and samples specified in snp_list and ind_list
         by default (std=True) scales X
         optionally (maxval=MaxValue) set bounds
     """
-    from sklearn import preprocessing
-    import struct
     nbyte = 1
     f = open(binfile, 'rb')
     n = int(struct.unpack('1d', f.read(8))[0])

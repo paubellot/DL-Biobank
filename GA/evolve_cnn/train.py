@@ -7,23 +7,26 @@ and also on
     https://github.com/fchollet/keras/blob/master/examples/mnist_cnn.py
 
 """
+import logging
 
-# import keras
+# Keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, BatchNormalization
 from keras.layers import Conv1D, MaxPooling1D, Flatten
 from keras.regularizers import l2
 from keras.callbacks import EarlyStopping, Callback
 from keras import backend as K
+
+# Numpy
 import numpy as np
+# Scipy
 from scipy.stats import pearsonr
-import logging
-from utils.utils import retrieve_data
-from sklearn.model_selection import train_test_split
+
+from GA.utils.utils import retrieve_data
+
 
 # Helper: Early stopping.
 early_stopper = EarlyStopping(monitor='val_loss', min_delta=0.1, patience=2, verbose=0, mode='auto')
-
 
 
 def compile_model_cnn(geneparam, input_shape):
@@ -139,14 +142,11 @@ def train_and_score(geneparam, dataset):
     logging.info("Compling Keras model")
     model = compile_model_cnn(geneparam, input_shape)
 
-    history = LossHistory()
-
     model.fit(train_data, y_train,
               epochs=1200,
               # using early stopping so no real limit - don't want to waste time on horrible architectures
               verbose=1,
               validation_data=(test_data, y_test),
-              # callbacks=[history])
               callbacks=[early_stopper])
 
     score = model.evaluate(test_data, y_test, verbose=0)
@@ -160,4 +160,5 @@ def train_and_score(geneparam, dataset):
     # we just need to know the final scores and the architecture
     if r != r:
         r = -1.0
+
     return r

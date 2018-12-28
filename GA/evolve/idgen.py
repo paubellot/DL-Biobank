@@ -1,9 +1,7 @@
 """Provide unique genome IDs."""
 
-import logging
 
-
-class IDgen():
+class IDgen:
     """Generate unique IDs.
     """
 
