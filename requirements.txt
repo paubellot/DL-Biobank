@@ -17,7 +17,7 @@ ipython-genutils==0.2.0
 Keras==2.1.6
 Markdown==2.6.11
 mock==2.0.0
-numpy==1.14.3
+numpy==1.21.0
 pandas==0.23.0
 pathlib2==2.3.2
 pbr==4.0.3
