@@ -3,7 +3,7 @@ astor==0.6.2
 backports.shutil-get-terminal-size==1.0.0
 backports.weakref==1.0.post1
 bleach>=3.1.1
-certifi==2018.4.16
+certifi==2022.12.7
 decorator==4.3.0
 enum34==1.1.6
 funcsigs==1.0.2
