@@ -18,5 +18,18 @@ jobs:
             - name: Archive artifact
               uses: actions/upload-artifact@v3
               with:
-                name: greeting-result
+                name: greeting-result-en
+                path: output.txt
+    
+    say_hola:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Greeting
+              run: | 
+                echo "Hola ${{github.event.inputs.person}}" > output.txt
+
+            - name: Archive artifact
+              uses: actions/upload-artifact@v3
+              with:
+                name: greeting-result-es
                 path: output.txt
