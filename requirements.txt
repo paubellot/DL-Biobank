@@ -14,7 +14,7 @@ hickle==2.1.0
 html5lib==0.999999999
 ipython==8.10.0
 ipython-genutils==0.2.0
-Keras==2.1.6
+Keras==2.13.1
 Markdown==2.6.11
 mock==2.0.0
 numpy==1.22.0
